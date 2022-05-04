@@ -15,6 +15,7 @@ use jsonwebtoken::{
     Algorithm, DecodingKey, Validation,
 };
 use serde::Deserialize;
+use std::fmt::{Display, Formatter};
 use std::{collections::HashSet, future::Future, pin::Pin};
 
 #[derive(Clone, Deserialize)]
@@ -41,6 +42,12 @@ enum ClientError {
     NotFound(String),
     #[display(fmt = "unsupported_algorithm")]
     UnsupportedAlgortithm(AlgorithmParameters),
+}
+
+impl Display for ClientError {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        todo!()
+    }
 }
 
 impl ResponseError for ClientError {
